@@ -1,5 +1,6 @@
 <template>
-  <h1 class="text-red-400">{{ msg }}</h1>
+  <h1 class="text-red-400 border">{{ msg }}</h1>
+  <button class="btn-indigo"> Click me </button>
 </template>
 
 <script lang="ts" setup>
@@ -12,21 +13,3 @@ const props = defineProps({
   },
 })
 </script>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>
