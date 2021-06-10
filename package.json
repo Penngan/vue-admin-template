@@ -38,6 +38,6 @@
   "main": "index.js",
   "license": "MIT",
   "lint-staged": {
-    "*.{vue,js,ts}": "eslint --cache --fix"
+    "*.{vue,js,ts}": "eslint --fix"
   }
 }
