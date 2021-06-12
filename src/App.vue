@@ -4,7 +4,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
