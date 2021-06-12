@@ -251,6 +251,11 @@
     "@vue/compiler-dom" "3.1.1"
     "@vue/shared" "3.1.1"
 
+"@vue/devtools-api@^6.0.0-beta.10", "@vue/devtools-api@^6.0.0-beta.12":
+  version "6.0.0-beta.14"
+  resolved "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.14.tgz#6ed2d6f8d66a9256c9ad04bfff08309ba87b9723"
+  integrity sha512-44fPrrN1cqcs6bFkT0C+yxTM6PZXLbR+ESh1U1j8UD22yO04gXvxH62HApMjLbS3WqJO/iCNC+CYT+evPQh2EQ==
+
 "@vue/reactivity@3.1.1":
   version "3.1.1"
   resolved "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.1.1.tgz"
@@ -2295,6 +2300,13 @@ pify@^4.0.1:
   resolved "https://registry.npmjs.org/pify/-/pify-4.0.1.tgz"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
+pinia@^2.0.0-beta.2:
+  version "2.0.0-beta.2"
+  resolved "https://registry.npmjs.org/pinia/-/pinia-2.0.0-beta.2.tgz#2d4321166ad77950abc35036dbefead0f0c81319"
+  integrity sha512-fzjzS5gaZyWNFfQBL60Bn967Jwy3nbYuVCjzpqCCbI/wzrIN/NqLRy9ACRaZvAf+T/VEv5+A0J87UkWalSJY0w==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.12"
+
 pkg-dir@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-2.0.0.tgz"
@@ -3056,6 +3068,13 @@ vue-ref@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/vue-ref/-/vue-ref-2.0.0.tgz#483084d732abed11da796778a8266a3af0ea1a9c"
   integrity sha512-uKNKpFOVeWNqS2mrBZqnpLyXJo5Q+vnkex6JvpENvhXHFNBW/SJTP8vJywLuVT3DpxwXcF9N0dyIiZ4/NpTexQ==
+
+vue-router@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.0.8.tgz#55d4290a3122444edbc91a3cd2492bb1d0cef494"
+  integrity sha512-42mWSQaH7CCBQDspQTHv63f34VEnZC20g9QNK4WJ/zW8SdIUeT6TQ2i/78fjF/pVBUPLBWrGhvB7uDnaz7O/pA==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.10"
 
 vue-tsc@^0.0.24:
   version "0.0.24"
