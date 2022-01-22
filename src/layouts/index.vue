@@ -11,7 +11,7 @@
 <script lang="ts" setup>
   import SideBar from './components/sidebar/index.vue'
   import AppMain from './components/AppMain.vue'
-  import NavBar from './components/NavBar.vue'
+  import NavBar from './components/navbar/index.vue'
 </script>
 
 <style lang="less" scoped>

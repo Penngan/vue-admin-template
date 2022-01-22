@@ -1,15 +1,15 @@
 <template>
   <div class="navbar-wrapper">
-    <Icon name="AlignLeftOutlined"></Icon>
+    <Hamburger />
   </div>
 </template>
 
 <script setup lang="ts">
-  import Icon from '@/components/icon/index.vue'
+  import Hamburger from './hamburger.vue'
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/variables';
+  @import '../../../style/variables';
   .navbar-wrapper {
     height: @navbar-height;
     overflow: hidden;
