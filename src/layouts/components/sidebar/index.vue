@@ -1,8 +1,12 @@
 <template>
-  <div class="sidebar-container"> sidebar </div>
+  <div class="sidebar-container">
+    <Menu />
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import Menu from './menu.vue'
+</script>
 
 <style lang="less" scoped>
   @import '../../../style/variables';

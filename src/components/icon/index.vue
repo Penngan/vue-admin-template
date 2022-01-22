@@ -13,18 +13,16 @@
     },
     size: {
       type: [Number, String],
-      default: 24,
     },
     color: {
       type: String as PropType<Pick<CSSProperties, 'color'>>,
-      default: '#000',
     },
   })
 
   const iconStyles = computed(() => {
     return {
-      fontSize: `${props.size}px`,
-      color: props.color,
+      ...(props.size && { fontSize: `${props.size}px` }),
+      ...(props.color && { color: props.color }),
     }
   })
 </script>
