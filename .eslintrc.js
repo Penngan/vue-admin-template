@@ -1,12 +1,18 @@
 module.exports = {
   root: true,
+  parser: 'vue-eslint-parser',
   env: {
     browser: true,
     es2021: true,
     node: true,
     'vue/setup-compiler-macros': true,
   },
-  extends: ['plugin:vue/vue3-recommended', 'prettier', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
+    'prettier',
+    'plugin:prettier/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
@@ -16,5 +22,7 @@ module.exports = {
   rules: {
     // vue
     'vue/multi-word-component-names': 'off',
+
+    '@typescript-eslint/consistent-type-imports': 'warn',
   },
 }

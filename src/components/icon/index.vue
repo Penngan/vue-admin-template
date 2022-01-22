@@ -3,7 +3,8 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, CSSProperties, PropType } from 'vue'
+  import type { CSSProperties, PropType } from 'vue'
+  import { computed } from 'vue'
 
   const props = defineProps({
     name: {
