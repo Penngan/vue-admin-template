@@ -1,3 +1,14 @@
 <template>
-  <div class="w-full h-12.5"> navbar </div>
+  <div class="navbar-wrapper"> navbar </div>
 </template>
+
+<style lang="less" scoped>
+  @import '../../style/variables';
+  .navbar-wrapper {
+    height: @navbar-height;
+    overflow: hidden;
+    position: relative;
+    background: @navbar-background;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  }
+</style>

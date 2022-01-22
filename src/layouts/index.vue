@@ -1,7 +1,7 @@
 <template>
-  <div class="relative w-full h-full app-wrapper">
+  <div class="app-wrapper">
     <SideBar />
-    <div class="main-container ml-52.5">
+    <div class="main-container">
       <NavBar />
       <AppMain />
     </div>
@@ -13,3 +13,15 @@
   import AppMain from './components/AppMain.vue'
   import NavBar from './components/NavBar.vue'
 </script>
+
+<style lang="less" scoped>
+  @import '../style/variables';
+  .app-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    .main-container {
+      margin-left: @sidebar-width;
+    }
+  }
+</style>
