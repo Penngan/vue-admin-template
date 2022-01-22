@@ -1,6 +1,12 @@
 <template>
-  <div class="navbar-wrapper"> navbar </div>
+  <div class="navbar-wrapper">
+    <Icon name="AlignLeftOutlined"></Icon>
+  </div>
 </template>
+
+<script setup lang="ts">
+  import Icon from '@/components/icon/index.vue'
+</script>
 
 <style lang="less" scoped>
   @import '../../style/variables';
