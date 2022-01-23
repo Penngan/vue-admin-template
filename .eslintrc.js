@@ -22,7 +22,17 @@ module.exports = {
   rules: {
     // vue
     'vue/multi-word-component-names': 'off',
-
+    //ts
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/consistent-type-imports': 'warn',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false,
+        },
+      },
+    ],
   },
 }
