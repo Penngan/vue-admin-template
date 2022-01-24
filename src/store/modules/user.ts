@@ -11,5 +11,22 @@ export const useUserStore = defineStore({
     }
   },
   getters: {},
-  actions: {},
+  actions: {
+    setToken(token: string) {
+      this.token = token
+    },
+    removeToken() {
+      this.token = ''
+    },
+  },
+  // 数据持久化
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        storage: localStorage,
+        paths: ['token'],
+      },
+    ],
+  },
 })
