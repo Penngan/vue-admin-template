@@ -7,12 +7,7 @@ module.exports = {
     node: true,
     'vue/setup-compiler-macros': true,
   },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
@@ -21,6 +16,9 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     // vue
+    'vue/no-v-html': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-explicit-emits': 'off',
     'vue/multi-word-component-names': 'off',
     //ts
     '@typescript-eslint/no-explicit-any': 'off',
