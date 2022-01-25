@@ -1,28 +1,29 @@
-import router, { asyncRoutes } from '@/router'
+import router from '@/router'
 import { getToken } from '@/utils/auth'
-import store from './store'
 import { usePermissionStore } from '@/store/modules/permission'
 
-console.log(asyncRoutes)
-const permissStore = usePermissionStore(store)
-const flatPermissionsRoutes = permissStore.flatPermissionsRoutes
 const whiteList = ['/login', '/404', '/401'] // no redirect whitelist
 router.beforeEach(async (to, from, next) => {
+  const permissStore = usePermissionStore()
+  const permissionsRoutes = permissStore.permissionsRoutes
   const token = getToken()
   if (token) {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      if (Object.keys(flatPermissionsRoutes).length > 0 && flatPermissionsRoutes[to.path]) {
+      if (permissionsRoutes.length) {
         next()
       } else {
         try {
-          const routes = await permissStore.getPermissionsRoutes()
-          console.log(routes)
+          await permissStore.getPermissionsRoutes()
+          const filteredAsyncRoutes = permissStore.generateRoutes()
+          filteredAsyncRoutes.forEach((route) => {
+            router.addRoute(route)
+          })
+          next({ ...to, replace: true })
         } catch (e) {
-          console.log(e)
+          next(`/login?redirect=${to.path}`)
         }
-        next()
       }
     }
   } else {

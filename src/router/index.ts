@@ -5,7 +5,7 @@ import example from './modules/example'
 import nested from './modules/nested'
 import group from './modules/group'
 
-const constantRoutes: RouteRecordRaw[] = [
+export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/redirect',
     component: Layout,
@@ -76,6 +76,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   nested,
   group,
+  { path: '/:pathMatch(.*)', redirect: '/404', meta: { hideInMenu: true } },
 ]
 
 const router = createRouter({

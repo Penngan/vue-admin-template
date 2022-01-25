@@ -14,20 +14,20 @@
 <script setup lang="ts">
   import Menu from '@/components/menu'
   import { ref, onMounted } from 'vue'
-  import { useRouter, useRoute } from 'vue-router'
-  import useRouterToMenu from '@/layouts/hooks/useRouterToMenu'
+  import { useRoute } from 'vue-router'
+  import { usePermissionStore } from '@/store/modules/permission'
 
+  const permissionStore = usePermissionStore()
+  const menus = permissionStore.routes
   const selectedKeys = ref<string[]>(['/dashboard'])
   const openKeys = ref<string[]>([])
 
-  const routes = useRouter()
   const route = useRoute()
   onMounted(() => {
     const { fullPath, matched } = route
     selectedKeys.value = [fullPath]
     openKeys.value = matched.map(({ path }) => path)
   })
-  const menus = useRouterToMenu(routes.options.routes)
 </script>
 
 <style lang="less">
