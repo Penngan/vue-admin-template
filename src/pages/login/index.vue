@@ -18,7 +18,7 @@
           </InputPassword>
         </FormItem>
         <FormItem>
-          <Button type="primary" size="large" block @click="login"> 登录 </Button>
+          <Button type="primary" size="large" block @click="handleLogin"> 登录 </Button>
         </FormItem>
       </Form>
     </div>
@@ -29,27 +29,33 @@
   import { Form, FormItem, Input, InputPassword, Button } from 'ant-design-vue'
   import { reactive } from 'vue'
   import Icon from '@/components/icon/index.vue'
+  import { login } from '@/api/user'
+  import { setToken } from '@/utils/auth'
+  import { useRouteQuery } from '@/hooks/useRouteQuery'
+  import { useRouter } from 'vue-router'
 
-  import { useUserStore } from '@/store/modules/user'
-
-  const userStore = useUserStore()
-  console.log(userStore)
+  const redirect = useRouteQuery('redirect', '/')
+  const router = useRouter()
   const useForm = Form.useForm
-
   const loginFormRef = reactive({
-    username: '',
-    password: '',
+    username: 'admin',
+    password: '123456',
   })
-
   const rulesRef = reactive({
     username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
   })
   const { validate, validateInfos } = useForm(loginFormRef, rulesRef)
 
-  const login = () => {
-    validate().then((res) => {
-      console.log(res)
+  const handleLogin = () => {
+    validate().then((data) => {
+      login(data).then((res: any) => {
+        setToken(res.token)
+        router.push({ path: redirect.value })
+        // getInfo('1').then((res) => {
+        //   console.log(res)
+        // })
+      })
     })
   }
 </script>

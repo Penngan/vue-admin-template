@@ -1,6 +1,7 @@
 import { useUserStore } from '@/store/modules/user'
+import store from '@/store'
 
-const userStore = useUserStore()
+const userStore = useUserStore(store)
 
 export const getToken = () => {
   return userStore.token

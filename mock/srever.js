@@ -27,30 +27,21 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 
 // 验证token
-server.use('/getInfo', (req, res, next) => {
+server.use('/users', (req, res, next) => {
   const token = req.headers.authorization
   if (!token) {
-    res.status(401).jsonp({
-      code: 401,
-      msg: '请先登录',
-    })
+    res.status(401).jsonp({ code: 401, msg: '请先登录' })
     return
   }
   try {
     const result = verifyToken(token)
     if (result.exp < Date.now() / 1000) {
-      res.status(401).jsonp({
-        code: 401,
-        msg: '登录已过期',
-      })
+      res.status(401).jsonp({ code: 401, msg: '登录已过期' })
       return
     }
     next()
   } catch (error) {
-    res.status(401).jsonp({
-      code: 401,
-      msg: '登录已过期',
-    })
+    res.status(401).jsonp({ code: 401, msg: '登录已过期' })
   }
 })
 
@@ -60,15 +51,11 @@ server.post('/login', (req, res) => {
     const token = createToken({ username, password })
     res.status(200).json({
       code: 0,
-      data: {
-        token,
-      },
+      data: { token },
+      msg: 'success',
     })
   } else {
-    res.status(200).json({
-      code: 1,
-      msg: '用户名或密码错误',
-    })
+    res.status(200).json({ code: 1, msg: '用户名或密码错误' })
   }
 })
 
@@ -88,7 +75,7 @@ server.use(router)
 router.render = (req, res) => {
   res.jsonp({
     data: res.locals.data,
-    status: 0,
+    code: 0,
     msg: 'success',
   })
 }

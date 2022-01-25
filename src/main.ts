@@ -6,11 +6,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import * as Icons from '@ant-design/icons-vue'
+import './permission'
 
 const app = createApp(App)
 
 for (const key in Icons) {
   app.component(key, (Icons as Record<string, Component>)[key])
 }
+app.use(router).use(store)
 
-app.use(router).use(store).mount('#app')
+router.isReady().then(() => {
+  app.mount('#app')
+})

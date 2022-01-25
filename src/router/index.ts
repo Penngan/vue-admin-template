@@ -4,26 +4,32 @@ import Layout from '@/layouts/index.vue'
 import example from './modules/example'
 import nested from './modules/nested'
 import group from './modules/group'
-const routes: RouteRecordRaw[] = [
+
+const constantRoutes: RouteRecordRaw[] = [
+  {
+    path: '/redirect',
+    component: Layout,
+    meta: { hideInMenu: true },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/pages/redirect/index'),
+      },
+    ],
+  },
   {
     path: '/login',
-    meta: {
-      hideInMenu: true,
-    },
+    meta: { hideInMenu: true },
     component: () => import('@/pages/login/index.vue'),
   },
   {
     path: '/404',
-    meta: {
-      hideInMenu: true,
-    },
+    meta: { hideInMenu: true },
     component: () => import('@/pages/error-page/404.vue'),
   },
   {
     path: '/401',
-    meta: {
-      hideInMenu: true,
-    },
+    meta: { hideInMenu: true },
     component: () => import('@/pages/error-page/401.vue'),
   },
   {
@@ -48,6 +54,8 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+]
+export const asyncRoutes: RouteRecordRaw[] = [
   example,
   {
     path: '/form',
@@ -72,7 +80,8 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  scrollBehavior: () => ({ top: 0 }),
+  routes: constantRoutes,
 })
 
 export default router
