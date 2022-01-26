@@ -8,7 +8,7 @@ export function login(data: Record<string, unknown>) {
   })
 }
 
-export function getInfo(id: string) {
+export function getInfo(id: number) {
   return service.request({
     url: `/api/users/${id}`,
     method: 'get',

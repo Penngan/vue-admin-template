@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { notification } from 'ant-design-vue'
-import { getToken } from '@/utils/auth'
+import { useToken } from '@/hooks/useToken'
 
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
@@ -11,7 +11,8 @@ const service = axios.create({
 service.interceptors.request.use(
   (config: any) => {
     // 在请求发送之前做一些处理
-    config.headers['Authorization'] = getToken() ?? ''
+    const token = useToken()
+    config.headers['Authorization'] = token.value
     return config
   },
   (error) => {

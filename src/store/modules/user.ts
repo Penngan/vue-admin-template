@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { getInfo } from '@/api/user'
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -8,6 +9,7 @@ export const useUserStore = defineStore({
       name: '',
       avatar: '',
       introduction: '',
+      roles: [],
     }
   },
   getters: {},
@@ -17,6 +19,12 @@ export const useUserStore = defineStore({
     },
     removeToken() {
       this.token = ''
+    },
+    async getUserInfo() {
+      const data: any = await getInfo(1)
+      this.name = data.name
+      this.avatar = data.avatar
+      this.roles = data.roles
     },
   },
   // 数据持久化

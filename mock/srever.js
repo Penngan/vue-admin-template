@@ -2,6 +2,7 @@ const jsonServer = require('json-server')
 const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
 const server = jsonServer.create()
+const verify = require('./verify')
 
 // bodyParser
 server.use(bodyParser.json())
@@ -18,32 +19,13 @@ const EXPIRES_IN = '1h'
 const createToken = (payload) => {
   return jwt.sign(payload, SECRET_KEY, { expiresIn: EXPIRES_IN })
 }
-const verifyToken = (token) => {
-  return jwt.verify(token, SECRET_KEY)
-}
 
 // Set default middlewares (logger, static, cors and no-cache)
 const middlewares = jsonServer.defaults()
 server.use(middlewares)
 
 // 验证token
-server.use('/users', (req, res, next) => {
-  const token = req.headers.authorization
-  if (!token) {
-    res.status(401).jsonp({ code: 401, msg: '请先登录' })
-    return
-  }
-  try {
-    const result = verifyToken(token)
-    if (result.exp < Date.now() / 1000) {
-      res.status(401).jsonp({ code: 401, msg: '登录已过期' })
-      return
-    }
-    next()
-  } catch (error) {
-    res.status(401).jsonp({ code: 401, msg: '登录已过期' })
-  }
-})
+server.use(verify)
 
 server.post('/login', (req, res) => {
   const { username, password } = req.body

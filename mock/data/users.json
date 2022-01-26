@@ -1,4 +1,18 @@
 [
-  { "id": 1, "name": "John Doe", "email": ""},
-  {"id":  2, "name": "Jane Doe", "email": ""}
+  {
+    "id": 1,
+    "name": "Super Admin",
+    "avatar": "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+    "roles": [
+      "admin"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Editor",
+    "avatar": "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+    "roles": [
+      "editor"
+    ]
+  }
 ]

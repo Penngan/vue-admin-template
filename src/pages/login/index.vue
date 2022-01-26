@@ -30,11 +30,12 @@
   import { reactive } from 'vue'
   import Icon from '@/components/icon/index.vue'
   import { login } from '@/api/user'
-  import { setToken } from '@/utils/auth'
   import { useRouteQuery } from '@/hooks/useRouteQuery'
   import { useRouter } from 'vue-router'
+  import { useToken } from '@/hooks/useToken'
 
   const redirect = useRouteQuery('redirect', '/')
+  const token = useToken()
   const router = useRouter()
   const useForm = Form.useForm
   const loginFormRef = reactive({
@@ -50,11 +51,8 @@
   const handleLogin = () => {
     validate().then((data) => {
       login(data).then((res: any) => {
-        setToken(res.token)
+        token.value = res.token
         router.push({ path: redirect.value })
-        // getInfo('1').then((res) => {
-        //   console.log(res)
-        // })
       })
     })
   }
