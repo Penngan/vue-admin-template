@@ -1,17 +1,34 @@
 <template>
-  <div class="sidebar-container">
+  <Drawer v-if="device === 'mobile'" v-model:visible="drawerVisible" placement="left" :closable="false" width="300" mask-closable>
     <Menu />
+  </Drawer>
+  <div v-else class="sidebar-container">
+    <Menu :collapsed="collapsed" />
   </div>
 </template>
 
 <script setup lang="ts">
   import Menu from './menu.vue'
+  import { Drawer } from 'ant-design-vue'
+  import { computed } from 'vue'
+  import { useAppStore } from '@/store/modules/app'
+  const appStore = useAppStore()
+  const collapsed = computed(() => appStore.collapsed)
+  const device = computed(() => appStore.device)
+  const drawerVisible = computed({
+    get() {
+      return appStore.drawerVisible
+    },
+    set() {
+      appStore.toggleDrawerVisible()
+    },
+  })
 </script>
 
 <style lang="less" scoped>
   @import '../../../style/variables';
   .sidebar-container {
-    transition: width 3s;
+    transition: width 0.3s;
     width: @sidebar-width !important;
     background-color: @menu-background;
     height: 100%;

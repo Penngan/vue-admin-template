@@ -8,6 +8,7 @@
     router
     theme="dark"
     mode="inline"
+    :inline-collapsed="collapsed"
   ></Menu>
 </template>
 
@@ -16,6 +17,10 @@
   import { ref, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
   import { usePermissionStore } from '@/store/modules/permission'
+
+  defineProps({
+    collapsed: Boolean,
+  })
 
   const permissionStore = usePermissionStore()
   const menus = permissionStore.routes
