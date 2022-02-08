@@ -4,13 +4,16 @@
       <Hamburger />
       <Breadcrumb />
     </div>
-    <div> 111 </div>
+    <div class="pr-[20px]">
+      <Avatar />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import Hamburger from './hamburger.vue'
   import Breadcrumb from '@/components/breadcrumb/index.vue'
+  import Avatar from './avatar.vue'
 </script>
 
 <style lang="less" scoped>
