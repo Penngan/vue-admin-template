@@ -14,7 +14,7 @@
   {
     "id": "2",
     "path": "/form",
-    "has_permission": false,
+    "has_permission": true,
     "children": [
       {
         "id": "2-1",

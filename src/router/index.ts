@@ -46,10 +46,6 @@ export const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         name: 'dashboard',
-        meta: {
-          title: 'Dashboard',
-          icon: 'DashboardOutlined',
-        },
         component: () => import('@/pages/dashboard/index.vue'),
       },
     ],

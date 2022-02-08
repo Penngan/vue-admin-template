@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import Menu from '@/components/menu'
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, watch } from 'vue'
   import { useRoute } from 'vue-router'
   import { usePermissionStore } from '@/store/modules/permission'
 
@@ -31,16 +31,20 @@
   const openKeys = ref<string[]>([])
 
   const route = useRoute()
-  onMounted(() => {
-    const { fullPath, matched } = route
-    selectedKeys.value = [fullPath]
-    if (!props.collapsed) {
-      openKeys.value = matched.map(({ path }) => path)
-    }
-  })
   const handleMenuItemClick = () => {
     emits('click')
   }
+  watch(
+    () => route.fullPath,
+    () => {
+      const { fullPath, matched } = route
+      selectedKeys.value = [fullPath]
+      if (!props.collapsed) {
+        openKeys.value = matched.map(({ path }) => path)
+      }
+    },
+    { immediate: true }
+  )
 </script>
 
 <style lang="less">

@@ -1,11 +1,16 @@
 <template>
   <div class="navbar-wrapper">
-    <Hamburger />
+    <div class="flex items-center">
+      <Hamburger />
+      <Breadcrumb />
+    </div>
+    <div> 111 </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import Hamburger from './hamburger.vue'
+  import Breadcrumb from '@/components/breadcrumb/index.vue'
 </script>
 
 <style lang="less" scoped>
@@ -16,5 +21,8 @@
     position: relative;
     background: @navbar-background;
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 </style>
