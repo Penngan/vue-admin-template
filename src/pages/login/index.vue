@@ -1,6 +1,6 @@
 <template>
   <div class="h-[100vh] w-full flex justify-center bg-[#2d3a4b] login-wrapper">
-    <div class="w-[500px] mt-[30%]">
+    <div class="w-[500px] mt-[200px]">
       <h1 class="text-[24px] text-center text-white">登录</h1>
       <Form>
         <FormItem v-bind="validateInfos.username">

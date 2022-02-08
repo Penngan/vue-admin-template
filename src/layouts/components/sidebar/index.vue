@@ -1,6 +1,14 @@
 <template>
-  <Drawer v-if="device === 'mobile'" v-model:visible="drawerVisible" placement="left" :closable="false" width="300" mask-closable>
-    <Menu />
+  <Drawer
+    v-if="device === 'mobile'"
+    v-model:visible="drawerVisible"
+    placement="left"
+    :closable="false"
+    width="220"
+    :body-style="{ padding: 0 }"
+    mask-closable
+  >
+    <Menu @click="handleMenuItemClick" />
   </Drawer>
   <div v-else class="sidebar-container">
     <Menu :collapsed="collapsed" />
@@ -23,6 +31,10 @@
       appStore.toggleDrawerVisible()
     },
   })
+
+  const handleMenuItemClick = () => {
+    appStore.toggleDrawerVisible()
+  }
 </script>
 
 <style lang="less" scoped>

@@ -16,7 +16,9 @@ export const useAppStore = defineStore({
     },
     toggleDrawerVisible() {
       this.drawerVisible = !this.drawerVisible
-      console.log('toggleDrawerVisible', this.drawerVisible)
+    },
+    hideDrawer() {
+      this.drawerVisible = false
     },
   },
   // 数据持久化

@@ -1,7 +1,7 @@
 <template>
   <div class="hamburger" @click="toggleCollapsed">
-    <Icon v-if="collapse" name="align-left-outlined" size="20"></Icon>
-    <Icon v-else name="align-right-outlined" size="20"></Icon>
+    <Icon v-if="collapse" name="menu-unfold-outlined" size="20"></Icon>
+    <Icon v-else name="menu-fold-outlined" size="20"></Icon>
   </div>
 </template>
 

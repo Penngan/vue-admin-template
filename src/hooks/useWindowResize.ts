@@ -7,6 +7,7 @@ export function useWindowResize() {
   const appStore = useAppStore()
   const resizeHandler = () => {
     isMobile.value = document.body.getBoundingClientRect().width - 1 < WIDTH
+    appStore.hideDrawer()
     appStore.toggleDevice(isMobile.value ? 'mobile' : 'desktop')
   }
   onMounted(() => {

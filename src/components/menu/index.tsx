@@ -3,8 +3,9 @@ import { defineComponent, useAttrs } from 'vue'
 import type { MenuItem } from '@/components/menu/types'
 import Icon from '@/components/icon/index.vue'
 import { Menu } from 'ant-design-vue'
-import { MenuInfo } from 'ant-design-vue/lib/menu/src/interface'
-import { RouteLocationRaw, useRouter } from 'vue-router'
+import type { MenuInfo } from 'ant-design-vue/lib/menu/src/interface'
+import type { RouteLocationRaw } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   props: {

@@ -9,6 +9,7 @@
     theme="dark"
     mode="inline"
     :inline-collapsed="collapsed"
+    @click="handleMenuItemClick"
   ></Menu>
 </template>
 
@@ -18,9 +19,11 @@
   import { useRoute } from 'vue-router'
   import { usePermissionStore } from '@/store/modules/permission'
 
-  defineProps({
+  const props = defineProps({
     collapsed: Boolean,
   })
+
+  const emits = defineEmits(['click'])
 
   const permissionStore = usePermissionStore()
   const menus = permissionStore.routes
@@ -31,8 +34,13 @@
   onMounted(() => {
     const { fullPath, matched } = route
     selectedKeys.value = [fullPath]
-    openKeys.value = matched.map(({ path }) => path)
+    if (!props.collapsed) {
+      openKeys.value = matched.map(({ path }) => path)
+    }
   })
+  const handleMenuItemClick = () => {
+    emits('click')
+  }
 </script>
 
 <style lang="less">
