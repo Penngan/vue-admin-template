@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import Menu from '@/components/menu'
-  import { ref, onMounted, watch } from 'vue'
+  import { ref, watch } from 'vue'
   import { useRoute } from 'vue-router'
   import { usePermissionStore } from '@/store/modules/permission'
 

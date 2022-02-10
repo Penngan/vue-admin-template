@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Super Admin",
-    "avatar": "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+    "avatar": "http://tva1.sinaimg.cn/large/7eb90a9cly1gz7h8856f9j20k00k0mzs.jpg",
     "roles": [
       "admin"
     ]
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "name": "Editor",
-    "avatar": "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+    "avatar": "http://tva1.sinaimg.cn/large/7eb90a9cly1gz7h8856f9j20k00k0mzs.jpg",
     "roles": [
       "editor"
     ]
