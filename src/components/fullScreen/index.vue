@@ -1,7 +1,7 @@
 <template>
-  <div class="px-[10px] cursor-pointer hover:bg-[#f6f6f6] h-full flex items-center">
-    <Icon v-if="!isFullscreen" name="fullscreen-outlined" @click="toggleFullScreen" />
-    <Icon v-else name="fullscreen-exit-outlined" @click="toggleFullScreen" />
+  <div class="px-[10px] cursor-pointer hover:bg-[#f6f6f6] h-full flex items-center" @click="toggleFullScreen">
+    <Icon v-if="!isFullscreen" name="fullscreen-outlined" />
+    <Icon v-else name="fullscreen-exit-outlined" />
   </div>
 </template>
 
