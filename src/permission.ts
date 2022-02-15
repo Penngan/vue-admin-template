@@ -2,9 +2,16 @@ import router from '@/router'
 import { usePermissionStore } from '@/store/modules/permission'
 import { useUserStore } from '@/store/modules/user'
 import { useToken } from '@/hooks/useToken'
+import getPageTitle from '@/utils/getPageTitle'
+import setting from '@/setting'
+import NProgress from 'nprogress'
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
+import 'nprogress/nprogress.css'
 
 const whiteList = ['/login', '/404', '/401'] // no redirect whitelist
 router.beforeEach(async (to, from, next) => {
+  if (setting.isNeedNprogress) NProgress.start()
+  document.title = getPageTitle(to.meta.title as string)
   const permissStore = usePermissionStore()
   const userStore = useUserStore()
   const permissionsRoutes = permissStore.permissionsRoutes
@@ -27,6 +34,7 @@ router.beforeEach(async (to, from, next) => {
         } catch (e) {
           token.value = ''
           next({ path: `/login?redirect=${to.path}` })
+          if (setting.isNeedNprogress) NProgress.done()
         }
       }
     }
@@ -35,7 +43,11 @@ router.beforeEach(async (to, from, next) => {
       next()
     } else {
       next(`/login?redirect=${to.path}`)
-      // if (settings.isNeedNprogress) NProgress.done()
+      if (setting.isNeedNprogress) NProgress.done()
     }
   }
+})
+
+router.afterEach(() => {
+  if (setting.isNeedNprogress) NProgress.done()
 })
