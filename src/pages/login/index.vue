@@ -29,14 +29,13 @@
   import { Form, FormItem, Input, InputPassword, Button } from 'ant-design-vue'
   import { reactive } from 'vue'
   import Icon from '@/components/icon/index.vue'
-  import { login } from '@/api/user'
   import { useRouteQuery } from '@/hooks/useRouteQuery'
   import { useRouter } from 'vue-router'
-  import { useToken } from '@/hooks/useToken'
+  import { useUserStore } from '@/store/modules/user'
 
   const redirect = useRouteQuery('redirect', '/')
-  const token = useToken()
   const router = useRouter()
+  const userStore = useUserStore()
   const useForm = Form.useForm
   const loginFormRef = reactive({
     username: 'admin',
@@ -50,8 +49,7 @@
 
   const handleLogin = () => {
     validate().then((data) => {
-      login(data).then((res: any) => {
-        token.value = res.token
+      userStore.login(data).then(() => {
         router.push({ path: redirect.value })
       })
     })

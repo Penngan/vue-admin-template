@@ -8,7 +8,7 @@
       <Menu>
         <MenuItem key="0">Dashboard</MenuItem>
         <MenuDivider />
-        <MenuItem key="1">退出</MenuItem>
+        <MenuItem key="1" @click="logout">退出</MenuItem>
       </Menu>
     </template>
   </Dropdown>
@@ -19,6 +19,11 @@
   import { useUserStore } from '@/store/modules/user'
 
   const userStore = useUserStore()
+  const logout = () => {
+    userStore.logout().then(() => {
+      location.reload()
+    })
+  }
 </script>
 
 <style lang="less"></style>

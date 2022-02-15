@@ -41,6 +41,10 @@ server.post('/login', (req, res) => {
   }
 })
 
+server.post('/logout', (req, res) => {
+  res.status(200).json({ code: 0, msg: 'success' })
+})
+
 // 支持加载多个db json文件
 const path = require('path')
 const fs = require('fs')

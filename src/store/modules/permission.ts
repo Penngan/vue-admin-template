@@ -76,6 +76,11 @@ export const usePermissionStore = defineStore({
     setPermissionsRoutes(payload: PermissionRouteItem[]) {
       this.permissionsRoutes = payload
     },
+    reovePermissionsRoutes() {
+      this.routes = []
+      this.permissionsRoutes = []
+      this.flatPermissionsRoutes = {}
+    },
     async getPermissionsRoutes() {
       const routes = (await getPermissionRoutes()) as unknown as PermissionRouteItem[]
       this.setPermissionsRoutes(routes)

@@ -8,6 +8,13 @@ export function login(data: Record<string, unknown>) {
   })
 }
 
+export function logout() {
+  return service.request({
+    url: '/api/logout',
+    method: 'post',
+  })
+}
+
 export function getInfo(id: number) {
   return service.request({
     url: `/api/users/${id}`,

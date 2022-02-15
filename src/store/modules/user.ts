@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { getInfo } from '@/api/user'
+import { getInfo, login, logout } from '@/api/user'
+import { usePermissionStore } from '@/store/modules/permission'
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -19,6 +20,16 @@ export const useUserStore = defineStore({
     },
     removeToken() {
       this.token = ''
+    },
+    async login(data: Record<string, string>) {
+      const { token } = (await login(data)) as any
+      this.token = token
+    },
+    async logout() {
+      await logout()
+      this.removeToken()
+      const permissionStore = usePermissionStore()
+      permissionStore.reovePermissionsRoutes()
     },
     async getUserInfo() {
       const data: any = await getInfo(1)
