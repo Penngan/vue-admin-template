@@ -1,6 +1,6 @@
 import { computed } from 'vue'
-import type { RouteLocationMatched } from 'vue-router'
 import { useRoute } from 'vue-router'
+import type { AppRouteRecordRaw } from '@/router/types'
 
 function isDashboard(route: any) {
   const name = route && route.name
@@ -12,10 +12,10 @@ function isDashboard(route: any) {
 export function useBreadcrumb() {
   const route = useRoute()
   return computed(() => {
-    const matched = route.matched.filter((item) => item.meta && item.meta.title)
+    const matched = route.matched.filter((item) => item.meta && item.meta.title) as unknown as AppRouteRecordRaw[]
     const first = matched[0]
     if (!isDashboard(first)) {
-      matched.unshift({ path: '/dashboard', meta: { title: 'Dashboard' } } as unknown as RouteLocationMatched)
+      matched.unshift({ path: '/dashboard', redirect: '/dashboard', meta: { title: 'Dashboard' } })
     }
     return matched
   })

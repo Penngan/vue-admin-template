@@ -1,4 +1,5 @@
 import Layout from '@/layouts/index.vue'
+import { shallowRef } from 'vue'
 
 const nested = {
   path: '/nested',
@@ -8,7 +9,7 @@ const nested = {
     icon: 'BarsOutlined',
   },
   redirect: '/nested/menu1',
-  component: Layout,
+  component: shallowRef(Layout),
   children: [
     {
       path: 'menu1',

@@ -3,6 +3,7 @@
     <SideBar />
     <div class="main-container">
       <NavBar />
+      <TagsViews />
       <AppMain />
     </div>
   </div>
@@ -15,6 +16,7 @@
   import { useAppStore } from '@/store/modules/app'
   import { computed } from 'vue'
   import { useWindowResize } from '@/hooks/useWindowResize'
+  import TagsViews from './components/tagsViews/index.vue'
 
   useWindowResize()
   const appStore = useAppStore()

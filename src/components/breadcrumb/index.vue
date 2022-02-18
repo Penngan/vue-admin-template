@@ -7,11 +7,11 @@
 <script setup lang="ts">
   import { Breadcrumb, BreadcrumbItem } from 'ant-design-vue'
   import { useBreadcrumb } from '@/components/breadcrumb/useBreadcrumb'
-  import type { RouteLocationMatched } from 'vue-router'
   import { useRouter } from 'vue-router'
+  import type { AppRouteRecordRaw } from '@/router/types'
   const breadcrumbList = useBreadcrumb()
   const router = useRouter()
-  const handleLink = (item: RouteLocationMatched) => {
+  const handleLink = (item: AppRouteRecordRaw) => {
     const { redirect, path } = item
     if (redirect) {
       router.push(redirect as string)
@@ -20,5 +20,3 @@
     router.push(path)
   }
 </script>
-
-<style lang="less"></style>

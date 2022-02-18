@@ -1,11 +1,12 @@
-import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '@/layouts/index.vue'
 import example from './modules/example'
 import nested from './modules/nested'
 import group from './modules/group'
+import type { AppRouteRecordRaw } from '@/router/types'
+import { shallowRef } from 'vue'
 
-export const constantRoutes: RouteRecordRaw[] = [
+export const constantRoutes: AppRouteRecordRaw[] = [
   {
     path: '/redirect',
     component: Layout,
@@ -40,6 +41,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       title: 'Dashboard',
       icon: 'DashboardOutlined',
       hideChildrenInMenu: true,
+      affix: true,
     },
     component: Layout,
     children: [
@@ -51,12 +53,12 @@ export const constantRoutes: RouteRecordRaw[] = [
     ],
   },
 ]
-export const asyncRoutes: RouteRecordRaw[] = [
+export const asyncRoutes: AppRouteRecordRaw[] = [
   example,
   {
     path: '/form',
     name: 'Form',
-    component: Layout,
+    component: shallowRef(Layout),
     meta: {
       title: 'Form',
       icon: 'FormOutlined',

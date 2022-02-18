@@ -2,8 +2,8 @@ import { defineStore } from 'pinia'
 import { getPermissionRoutes } from '@/api/permission'
 import path from 'path-browserify'
 import { asyncRoutes, constantRoutes } from '@/router'
-import type { RouteRecordRaw } from 'vue-router'
 import type { MenuItem } from '@/components/menu/types'
+import type { AppRouteRecordRaw } from '@/router/types'
 
 type PermissionRouteItem = {
   path: string
@@ -26,10 +26,11 @@ function flatRoutes(routes: PermissionRouteItem[]) {
   return result
 }
 
-function filterRoutesByPermissionArray(flatPermissionsRoutes: Record<string, boolean>, asyncRoutes: RouteRecordRaw[], parentPath = '/') {
-  const filteredAsyncRoutes: RouteRecordRaw[] = []
+function filterRoutesByPermissionArray(flatPermissionsRoutes: Record<string, boolean>, asyncRoutes: AppRouteRecordRaw[], parentPath = '/') {
+  const filteredAsyncRoutes: AppRouteRecordRaw[] = []
   asyncRoutes.forEach((route) => {
     const fullPath = path.resolve(parentPath, route.path)
+    route.fullPath = fullPath
     if (flatPermissionsRoutes[fullPath] || flatPermissionsRoutes[fullPath] === undefined) {
       if (route.children && route.children.length) {
         route.children = filterRoutesByPermissionArray(flatPermissionsRoutes, route.children, fullPath)
@@ -40,7 +41,7 @@ function filterRoutesByPermissionArray(flatPermissionsRoutes: Record<string, boo
   return filteredAsyncRoutes
 }
 
-function generateRoutes(routes: RouteRecordRaw[], parentPath = '/'): MenuItem[] {
+function generateRoutes(routes: AppRouteRecordRaw[], parentPath = '/'): MenuItem[] {
   return routes
     .map((route) => {
       if (!route.meta?.hideInMenu) {
@@ -69,11 +70,11 @@ export const usePermissionStore = defineStore({
   id: 'permission',
   state: () => ({
     routes: [] as MenuItem[],
-    permissionsRoutes: {} as PermissionRouteItem[],
+    permissionsRoutes: {} as AppRouteRecordRaw[],
     flatPermissionsRoutes: {} as Record<string, boolean>,
   }),
   actions: {
-    setPermissionsRoutes(payload: PermissionRouteItem[]) {
+    setPermissionsRoutes(payload: AppRouteRecordRaw[]) {
       this.permissionsRoutes = payload
     },
     reovePermissionsRoutes() {
@@ -83,23 +84,13 @@ export const usePermissionStore = defineStore({
     },
     async getPermissionsRoutes() {
       const routes = (await getPermissionRoutes()) as unknown as PermissionRouteItem[]
-      this.setPermissionsRoutes(routes)
       this.flatPermissionsRoutes = flatRoutes(routes)
+      const filteredAsyncRoutes = filterRoutesByPermissionArray(this.flatPermissionsRoutes, asyncRoutes)
+      this.setPermissionsRoutes(filteredAsyncRoutes)
       return routes
     },
     generateRoutes() {
-      const filteredAsyncRoutes = filterRoutesByPermissionArray(this.flatPermissionsRoutes, asyncRoutes)
-      this.routes = generateRoutes(constantRoutes.concat(filteredAsyncRoutes))
-      return filteredAsyncRoutes
+      this.routes = generateRoutes(constantRoutes.concat(this.permissionsRoutes))
     },
   },
-  // persist: {
-  //   enabled: true,
-  //   strategies: [
-  //     {
-  //       key: 'flatPermissionsRoutes',
-  //       storage: localStorage,
-  //     },
-  //   ],
-  // },
 })

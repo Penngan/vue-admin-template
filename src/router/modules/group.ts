@@ -1,4 +1,5 @@
 import Layout from '@/layouts/index.vue'
+import { shallowRef } from 'vue'
 
 const group = {
   path: '/group',
@@ -8,7 +9,7 @@ const group = {
     icon: 'GroupOutlined',
   },
   redirect: '/group/group1',
-  component: Layout,
+  component: shallowRef(Layout),
   children: [
     {
       path: 'group1',

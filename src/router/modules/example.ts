@@ -1,4 +1,5 @@
 import Layout from '@/layouts/index.vue'
+import { shallowRef } from 'vue'
 
 const example = {
   path: '/example',
@@ -8,7 +9,7 @@ const example = {
     icon: 'CompassOutlined',
   },
   redirect: '/example/table',
-  component: Layout,
+  component: shallowRef(Layout),
   children: [
     {
       path: 'table',

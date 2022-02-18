@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar-wrapper">
+  <div class="navbar-wrapper shadow-sm">
     <div class="flex items-center">
       <Hamburger />
       <Breadcrumb />
@@ -96,7 +96,6 @@
     overflow: hidden;
     position: relative;
     background: @navbar-background;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
     display: flex;
     align-items: center;
     justify-content: space-between;
