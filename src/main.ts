@@ -1,5 +1,5 @@
 import '@/style/index.less'
-import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/antd.less'
 import type { Component } from 'vue'
 import { createApp } from 'vue'
 import App from './App.vue'

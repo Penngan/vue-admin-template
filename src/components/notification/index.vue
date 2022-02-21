@@ -30,7 +30,6 @@
   import { Popover, Badge, Tabs, TabPane, List, ListItem, ListItemMeta } from 'ant-design-vue'
   import Icon from '@/components/icon/index.vue'
   import type { PropType } from 'vue'
-  import { ref } from 'vue'
   type ListItemType = {
     title: string
     content: {

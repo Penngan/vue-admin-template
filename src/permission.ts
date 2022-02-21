@@ -10,7 +10,6 @@ import 'nprogress/nprogress.css'
 
 const whiteList = ['/login', '/404', '/401'] // no redirect whitelist
 router.beforeEach(async (to, from, next) => {
-  console.log(to)
   if (setting.isNeedNprogress) NProgress.start()
   document.title = getPageTitle(to.meta.title as string)
   const permissStore = usePermissionStore()
@@ -25,15 +24,12 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         try {
-          console.log(1)
           await userStore.getUserInfo()
           await permissStore.getPermissionsRoutes()
           await permissStore.generateRoutes()
           permissStore.permissionsRoutes.forEach((route) => {
-            console.log(2)
             router.addRoute(route)
           })
-          console.log(3)
           next({ ...to, replace: true })
         } catch (e) {
           token.value = ''
