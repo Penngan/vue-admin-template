@@ -44,11 +44,11 @@ function filterRoutesByPermissionArray(flatPermissionsRoutes: Record<string, boo
 function generateRoutes(routes: AppRouteRecordRaw[], parentPath = '/'): MenuItem[] {
   return routes
     .map((route) => {
-      if (!route.meta?.hideInMenu) {
-        if (route.meta?.hideChildrenInMenu && route.children && route.children.length === 1) {
+      if (!route.hideInMenu) {
+        if (route.hideChildrenInMenu && route.children && route.children.length === 1) {
           return {
-            title: route.meta?.title ?? '',
-            icon: route.meta?.icon ?? '',
+            title: route.children[0].meta?.title ?? '',
+            icon: route.children[0].meta?.icon ?? '',
             path: path.resolve(route.path, route.children[0].path),
           }
         } else {

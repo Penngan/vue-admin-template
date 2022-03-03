@@ -3,7 +3,6 @@
 </template>
 
 <script setup lang="ts">
-  import type { CSSProperties, PropType } from 'vue'
   import { computed } from 'vue'
 
   const props = defineProps({
@@ -15,7 +14,7 @@
       type: [Number, String],
     },
     color: {
-      type: String as PropType<Pick<CSSProperties, 'color'>>,
+      type: String,
     },
   })
 

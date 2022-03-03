@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrapper" :class="classes">
-    <SideBar />
+    <SideBar v-if="appStore.showAside" />
     <div class="main-container">
-      <NavBar />
+      <NavBar v-if="appStore.showHeader" />
       <TagsViews />
       <AppMain />
     </div>
@@ -23,6 +23,7 @@
   const classes = computed(() => ({
     'is-collapsed': appStore.collapsed,
     'is-mobile': appStore.device === 'mobile',
+    'has-no-sidebar': !appStore.showAside,
   }))
 </script>
 
@@ -52,6 +53,11 @@
       }
       .main-container {
         margin-left: 0 !important;
+      }
+    }
+    &.has-no-sidebar {
+      .main-container {
+        margin-left: 0;
       }
     }
   }

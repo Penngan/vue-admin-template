@@ -1,6 +1,8 @@
 <template>
   <Breadcrumb>
-    <BreadcrumbItem v-for="item in breadcrumbList" :key="item.path" :href="item.path" @click="handleLink(item)">{{ item.meta.title }}</BreadcrumbItem>
+    <BreadcrumbItem v-for="item in breadcrumbList" :key="item.path" :href="item.path" @click="handleLink(item)">{{
+      item.meta?.title
+    }}</BreadcrumbItem>
   </Breadcrumb>
 </template>
 

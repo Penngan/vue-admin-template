@@ -6,6 +6,8 @@ export const useAppStore = defineStore({
     collapsed: false,
     device: 'desktop',
     drawerVisible: false,
+    showHeader: true,
+    showAside: true,
   }),
   actions: {
     toggleCollapsed() {
@@ -13,6 +15,12 @@ export const useAppStore = defineStore({
     },
     toggleDevice(device: string) {
       this.device = device
+    },
+    toggleShowHeader() {
+      this.showHeader = !this.showHeader
+    },
+    toggleShowAside() {
+      this.showAside = !this.showAside
     },
     toggleDrawerVisible() {
       this.drawerVisible = !this.drawerVisible

@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar-wrapper shadow-sm">
+  <div class="navbar-wrapper border-b border-solid border-slate-200">
     <div class="flex items-center">
       <Hamburger />
       <Breadcrumb />

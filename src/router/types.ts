@@ -4,11 +4,11 @@ export type AppRouteRecordRaw = RouteRecordRaw & {
   meta?: {
     title?: string
     icon?: string
-    hideInMenu?: boolean
-    hideChildrenInMenu?: boolean
     affix?: boolean
     groupInMenu?: boolean
   }
+  hideInMenu?: boolean
+  hideChildrenInMenu?: boolean
   fullPath?: string
   redirect?: string
   children?: AppRouteRecordRaw[]
