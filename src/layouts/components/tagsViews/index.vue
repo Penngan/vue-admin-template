@@ -22,7 +22,7 @@
   import { useRoute, useRouter } from 'vue-router'
   import { useTagsView } from '@/layouts/components/tagsViews/useTagsView'
   import type { AppRouteRecordRaw } from '@/router/types'
-  import TagsOperation from './tagsOperation.vue'
+  import TagsOperation from './TagsOperation.vue'
 
   const route = useRoute()
   const router = useRouter()

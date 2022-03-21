@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-  import Hamburger from './hamburger.vue'
+  import Hamburger from './Hamburger.vue'
   import Breadcrumb from '@/components/breadcrumb/index.vue'
-  import Avatar from './avatar.vue'
+  import Avatar from './Avatar.vue'
   import Notification from '@/components/notification/index.vue'
   import FullScreen from '@/components/fullScreen/index.vue'
 

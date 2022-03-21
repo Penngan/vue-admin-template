@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-  import Menu from './menu.vue'
+  import Menu from './Menu.vue'
   import { Drawer } from 'ant-design-vue'
   import { computed } from 'vue'
   import { useAppStore } from '@/store/modules/app'
