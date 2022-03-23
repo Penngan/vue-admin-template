@@ -1,7 +1,11 @@
 <template>
-  <div> {{ msg }} </div>
+  <div>
+    <GrowCard />
+    <VisitAnalysis />
+  </div>
 </template>
 
 <script setup lang="ts">
-  const msg = 'home'
+  import GrowCard from './components/GrowCard.vue'
+  import VisitAnalysis from './components/VisitAnalysis.vue'
 </script>
