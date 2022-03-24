@@ -1,7 +1,13 @@
 <template>
   <div class="md:flex">
     <template v-for="(item, index) in growCardList" :key="item.title">
-      <Card size="small" :title="item.title" class="md:w-1/4 md:!mt-0" :class="{ 'md:!mr-[16px]': index + 1 < 4, '!mt-4': index > 0 }">
+      <Card
+        size="small"
+        :title="item.title"
+        class="md:w-1/4 md:!mt-0"
+        :loading="loading"
+        :class="{ 'md:!mr-[16px]': index + 1 < 4, '!mt-4': index > 0 }"
+      >
         <template #extra>
           <Tag :color="item.color">{{ item.action }}</Tag>
         </template>
@@ -23,6 +29,13 @@
   import Icon from '@/components/Icon/index.vue'
   import CountTo from '@/components/countTo/index.vue'
   import { growCardList } from '../data'
+
+  defineProps({
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  })
 </script>
 
 <style lang="less"></style>
