@@ -15,6 +15,7 @@ export function isNumber(val: unknown): val is number {
 }
 
 export function triggerWindowResize() {
-  const ev = new Event('resize', { bubbles: true, cancelable: false })
-  window.dispatchEvent(ev)
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'))
+  }, 100)
 }
