@@ -34,6 +34,7 @@
   import type { AppRouteRecordRaw } from '@/router/types'
   import type { MenuInfo } from 'ant-design-vue/es/menu/src/interface'
   import { useAppStore } from '@/store/modules/app'
+  import { triggerWindowResize } from '@/utils/util'
 
   const router = useRouter()
   const route = useRoute()
@@ -83,5 +84,6 @@
   const toggleFullScreen = () => {
     appStore.toggleShowAside()
     appStore.toggleShowHeader()
+    triggerWindowResize()
   }
 </script>

@@ -30,10 +30,8 @@
 
   watch(
     () => props.loading,
-    (val) => {
-      console.log(val)
+    () => {
       if (props.loading) return
-      console.log(11)
       setOptions({
         tooltip: {
           trigger: 'axis',

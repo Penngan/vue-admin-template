@@ -13,3 +13,8 @@ export function is(val: unknown, type: string) {
 export function isNumber(val: unknown): val is number {
   return is(val, 'Number')
 }
+
+export function triggerWindowResize() {
+  const ev = new Event('resize', { bubbles: true, cancelable: false })
+  window.dispatchEvent(ev)
+}
